@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // Clé API pour le service Fixer.io
-const API_KEY = "4ec3f0fc5c36091ce3d06a16e9dfdef8"; 
+const API_KEY = import.meta.env.VITE_FIXER_API_KEY;
 
 /**
  * Récupère les taux de change depuis l'API Fixer.io
@@ -12,8 +12,8 @@ const API_KEY = "4ec3f0fc5c36091ce3d06a16e9dfdef8";
 export const fetchRates = async (base = "EUR") => {
   try {
     const response = await axios.get(
-      `http://data.fixer.io/api/latest?access_key=${API_KEY}&base=${base}`
-    );
+  `https://data.fixer.io/api/latest?access_key=${API_KEY}&base=${base}`
+);
 
     // Si la requête est réussie, retourner les taux
     if (response.data.success) {
